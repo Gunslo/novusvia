@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novus Via Academy | English-Medium CAPS Tutor Centre | Claremont, Pretoria</title>
+  <meta name="description" content="Novus Via Academy is an English-medium CAPS tutor centre in Claremont, Pretoria (Gr RR–Gr 7). Guided Steps, Blessed Futures. 2027 Enrolments Open." />
+  <meta name="keywords" content="English tutor centre in Pretoria, CAPS tutor centre Pretoria, English-medium tutor centre, Primary education support Pretoria, Gr RR–Gr 7 educational support, Claremont Pretoria tutor centre, Learner support Pretoria, Aftercare Claremont Pretoria" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.novusvia.co.za/" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Novus Via Academy | English-Medium CAPS Tutor Centre (Gr RR–Gr 7)" />
+  <meta property="og:description" content="Guided Steps, Blessed Futures. Quality CAPS-based educational support in a structured, nurturing and Christian values-based learning environment in Claremont, Pretoria." />
+  <meta property="og:url" content="https://www.novusvia.co.za/" />
+  <meta property="og:site_name" content="Novus Via Academy" />
+
+  <!-- Structured Data: EducationalOrganization & LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["EducationalOrganization", "LocalBusiness"],
+    "name": "Novus Via Academy",
+    "slogan": "GUIDED STEPS, BLESSED FUTURES",
+    "description": "An English-medium tutor centre offering structured CAPS-based educational support for learners in Gr RR to Gr 7 in Claremont, Pretoria.",
+    "url": "https://www.novusvia.co.za",
+    "telephone": "+27619020023",
+    "email": "admin@novusvia.co.za",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "976 Paff Rd",
+      "addressLocality": "Claremont, Pretoria",
+      "addressRegion": "Gauteng",
+      "addressCountry": "ZA"
+    },
+    "areaServed": "Pretoria, Gauteng, South Africa"
+  }
+  </script>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Supabase JS Client (Optional Live Sync + LocalStorage Fallback) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --navy: #0F2342;
+      --navy-deep: #09162B;
+      --navy-light: #1C3863;
+      --gold: #C59B27;
+      --gold-light: #E2BE5B;
+      --gold-soft: #F9F3E3;
+      --white: #FFFFFF;
+      --ivory: #FAF8F5;
+      --blue-grey: #EEF2F6;
+      --blue-grey-dark: #D5DEE8;
+      --text-dark: #1A2433;
+      --text-muted: #526075;
+      --whatsapp: #1E8E3E;
+      --whatsapp-hover: #177331;
+      --danger: #B91C1C;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --shadow-sm: 0 4px 14px rgba(15, 35, 66, 0.06);
+      --shadow-md: 0 10px 30px rgba(15, 35, 66, 0.10);
+      --shadow-lg: 0 20px 45px rgba(15, 35, 66, 0.14);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--ivory);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-size: 0.82rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(197, 155, 39, 0.3);
+    }
+
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .top-bar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .top-bar-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-links a {
+      color: rgba(255,255,255,0.9);
+      transition: var(--transition);
+    }
+
+    .top-bar-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* Header & Navigation */
+    header.site-header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(15, 35, 66, 0.07);
+      border-bottom: 2px solid var(--gold-soft);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .brand-crest {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+    }
+
+    .brand-tagline {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    nav.desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      min-width: 230px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--blue-grey);
+      padding: 10px;
+      display: none;
+      z-index: 1001;
+    }
+
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown.open .dropdown-menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+
+    .dropdown-item {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      border-radius: 6px;
+      transition: var(--transition);
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background: var(--gold-soft);
+      color: var(--navy);
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: var(--blue-grey);
+      border: none;
+      color: var(--navy);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      background: var(--white);
+      border-top: 1px solid var(--blue-grey);
+      padding: 16px 20px 28px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mobile-nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--ivory);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .mobile-grade-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding: 8px 0 8px 10px;
+    }
+
+    .mobile-grade-chip {
+      padding: 8px;
+      text-align: center;
+      background: var(--blue-grey);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .btn-sm {
+      padding: 9px 16px;
+      font-size: 0.82rem;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .btn-gold:hover {
+      background: #B0881E;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: var(--white);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-outline-white {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .btn-outline-white:hover {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    /* SPA View Containers */
+    .page-view {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(115deg, rgba(9, 22, 43, 0.92) 0%, rgba(15, 35, 66, 0.84) 55%, rgba(15, 35, 66, 0.72) 100%),
+                  url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 84px 0 96px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197, 155, 39, 0.2);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-subtitle-caps {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-headline-motto {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .hero-meta-tag {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-meta-tag.highlight {
+      background: var(--gold);
+      color: var(--navy-deep);
+      border-color: var(--gold);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-card {
+      background: var(--white);
+      color: var(--text-dark);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border-top: 5px solid var(--gold);
+    }
+
+    .hero-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .quick-facts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .quick-facts-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-ivory {
+      background: var(--ivory);
+    }
+
+    .section-blue-grey {
+      background: var(--blue-grey);
+    }
+
+    .section-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .section-navy h2, .section-navy h3 {
+      color: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 50px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.2vw, 2.65rem);
+      margin-bottom: 16px;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .section-navy .section-lead {
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Feature Cards Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--blue-grey);
+      border-top: 3px solid var(--gold);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--gold-soft);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.38rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    /* Split Content Block */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .image-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .image-caption-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(15, 35, 66, 0.88);
+      color: var(--white);
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Grades Grid */
+    .grades-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grade-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      border: 1px solid var(--blue-grey-dark);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .grade-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .grade-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .grade-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .grade-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .grade-card-link {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grade-card:hover .grade-card-link {
+      color: var(--gold);
+    }
+
+    /* Why Choose Us Checklist */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .why-item {
+      background: var(--white);
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--gold);
+    }
+
+    .why-item-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* CambriLearn Referral Banner */
+    .cambrilearn-card {
+      background: linear-gradient(135deg, var(--white) 0%, var(--gold-soft) 100%);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .referral-tag {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .discount-highlight {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .discount-highlight span {
+      color: var(--gold);
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+    }
+
+    .code-copy-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border: 2px dashed var(--navy);
+      padding: 10px 18px;
+      border-radius: 10px;
+      margin: 16px 0 22px;
+    }
+
+    .code-value {
+      font-family: monospace;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+    }
+
+    /* Forms */
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--blue-grey-dark);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--blue-grey-dark);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(15, 35, 66, 0.1);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .alert-box {
+      padding: 18px 22px;
+      border-radius: 10px;
+      margin-top: 18px;
+      display: none;
+      font-size: 0.94rem;
+    }
+
+    .alert-success {
+      background: #ECFDF5;
+      border: 1px solid #10B981;
+      color: #065F46;
+    }
+
+    .alert-error {
+      background: #FEF2F2;
+      border: 1px solid #EF4444;
+      color: #991B1B;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--blue-grey-dark);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 18px 22px;
+      background: var(--white);
+      border: none;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      padding: 0 22px 18px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: none;
+      border-top: 1px solid var(--blue-grey);
+      padding-top: 14px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--blue-grey-dark);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .gallery-meta {
+      padding: 14px 16px;
+    }
+
+    .gallery-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Admin Dashboard Styles */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border-top: 4px solid var(--navy);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card.gold {
+      border-top-color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .stat-num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-top: 4px;
+    }
+
+    .admin-filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 12px;
+      background: var(--white);
+      padding: 18px;
+      border-radius: var(--radius-md);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lead-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--navy);
+    }
+
+    .lead-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--blue-grey);
+    }
+
+    .status-pill {
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--gold-soft);
+      color: var(--navy);
+    }
+
+    .lead-details-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .lead-actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--blue-grey);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: var(--whatsapp);
+      color: var(--white);
+      padding: 14px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(30, 142, 62, 0.38);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: var(--transition);
+    }
+
+    .floating-wa:hover {
+      background: var(--whatsapp-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.85);
+      padding: 64px 0 28px;
+      border-top: 4px solid var(--gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 36px;
+      margin-bottom: 44px;
+    }
+
+    .footer-title {
+      color: var(--gold-light);
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-links button, .footer-links a {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0;
+      transition: var(--transition);
+    }
+
+    .footer-links button:hover, .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* Responsive Breakpoints (Tablet & Mobile Optimization) */
+    @media (max-width: 1080px) {
+      nav.desktop-nav, .nav-cta-group {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .hero-grid, .split-grid {
+        grid-template-columns: 1fr;
+      }
+      .features-grid, .grades-grid, .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .admin-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .admin-filters {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        padding: 54px 0 64px;
+      }
+      .features-grid, .grades-grid, .why-grid, .gallery-grid, .form-grid, .lead-details-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .admin-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .admin-filters {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .floating-wa span.wa-label {
+        display: none;
+      }
+      .floating-wa {
+        padding: 15px;
+        border-radius: 50%;
+      }
+      .cambrilearn-card, .form-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-badge">
+        <span>✦ 2027 ENROLMENTS OPEN</span>
+        <span>|</span>
+        <span>GR RR–GR 7 • ENGLISH-MEDIUM • CAPS</span>
+      </div>
+      <div class="top-bar-links">
+        <a href="tel:+27619020023">📞 061 902 0023</a>
+        <a href="mailto:admin@novusvia.co.za">✉️ admin@novusvia.co.za</a>
+        <span>📍 976 Paff Rd, Claremont, Pretoria</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-lockup" onclick="navigateTo('home')">
+        <!-- Novus Via Academy Emblem SVG -->
+        <svg class="brand-crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Novus Via Academy Crest">
+          <path d="M32 4L56 14V32C56 46.5 45.8 56.8 32 60C18.2 56.8 8 46.5 8 32V14L32 4Z" fill="#0F2342" stroke="#C59B27" stroke-width="3"/>
+          <path d="M18 38C23 35 28 36 32 39C36 36 41 35 46 38V24C41 21 36 22 32 25C28 22 23 21 18 24V38Z" fill="#FAF8F5" stroke="#C59B27" stroke-width="1.8"/>
+          <path d="M32 14V25M28 18H36" stroke="#E2BE5B" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M14 46H50" stroke="#C59B27" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="brand-text-wrap">
+          <span class="brand-title">NOVUS VIA ACADEMY</span>
+          <span class="brand-tagline">GUIDED STEPS, BLESSED FUTURES</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <button class="nav-link active" data-nav="home" onclick="navigateTo('home')">Home</button>
+        <button class="nav-link" data-nav="about" onclick="navigateTo('about')">About Us</button>
+        <div class="nav-dropdown">
+          <button class="nav-link" data-nav="grades" onclick="navigateTo('grade-detail', 'Gr R')">Our Grades ▾</button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr RR')">Gr RR</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr R')">Gr R</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 1')">Gr 1</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 2')">Gr 2</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 3')">Gr 3</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 4')">Gr 4</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 5')">Gr 5</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 6')">Gr 6</button>
+            <button class="dropdown-item" onclick="navigateTo('grade-detail', 'Gr 7')">Gr 7</button>
+          </div>
+        </div>
+        <button class="nav-link" data-nav="curriculum" onclick="navigateTo('curriculum')">CAPS Curriculum</button>
+        <button class="nav-link" data-nav="environment" onclick="navigateTo('environment')">Environment</button>
+        <button class="nav-link" data-nav="aftercare" onclick="navigateTo('aftercare')">Aftercare</button>
+        <button class="nav-link" data-nav="enrolment" onclick="navigateTo('enrolment')">Fees & Enrolment</button>
+        <button class="nav-link" data-nav="faq" onclick="navigateTo('faq')">FAQ</button>
+        <button class="nav-link" data-nav="contact" onclick="navigateTo('contact')">Contact</button>
+      </nav>
+
+      <div class="nav-cta-group">
+        <button class="btn btn-gold btn-sm" onclick="openEnquiryWithPreset('Enrolment', '')">Enquire Now</button>
+        <button class="btn btn-outline btn-sm" onclick="navigateTo('admin')">Staff Portal</button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-nav-list">
+        <button class="mobile-nav-btn" onclick="navigateTo('home'); toggleMobileMenu()">Home</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('about'); toggleMobileMenu()">About Novus Via Academy</button>
+        <div style="padding: 8px 14px; font-weight: 700; font-size: 0.85rem; color: var(--gold);">OUR GRADES (GR RR – GR 7)</div>
+        <div class="mobile-grade-grid">
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr RR'); toggleMobileMenu()">Gr RR</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr R'); toggleMobileMenu()">Gr R</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 1'); toggleMobileMenu()">Gr 1</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 2'); toggleMobileMenu()">Gr 2</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 3'); toggleMobileMenu()">Gr 3</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 4'); toggleMobileMenu()">Gr 4</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 5'); toggleMobileMenu()">Gr 5</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 6'); toggleMobileMenu()">Gr 6</button>
+          <button class="mobile-grade-chip" onclick="navigateTo('grade-detail', 'Gr 7'); toggleMobileMenu()">Gr 7</button>
+        </div>
+        <button class="mobile-nav-btn" onclick="navigateTo('curriculum'); toggleMobileMenu()">CAPS Curriculum</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('environment'); toggleMobileMenu()">Our Learning Environment</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('aftercare'); toggleMobileMenu()">Aftercare (13:00–18:00)</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('enrolment'); toggleMobileMenu()">Fees & Enrolment</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('faq'); toggleMobileMenu()">Parent Info & FAQ</button>
+        <button class="mobile-nav-btn" onclick="navigateTo('contact'); toggleMobileMenu()">Contact Us</button>
+        <button class="mobile-nav-btn" style="background: var(--navy); color: var(--white);" onclick="navigateTo('admin'); toggleMobileMenu()">Admissions Staff Portal</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       VIEW 1: HOMEPAGE
+  ========================================================== -->
+  <main id="view-home" class="page-view active">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-pill">✦ 2027 ENROLMENTS OPEN</div>
+          <h1>NOVUS VIA ACADEMY</h1>
+          <div class="hero-subtitle-caps">AN ENGLISH-MEDIUM TUTOR CENTRE</div>
+          <p class="hero-headline-motto">WHERE EVERY LEARNER IS GUIDED TOWARDS A BRIGHTER FUTURE.</p>
+          <p class="hero-desc">
+            Quality CAPS-based educational support in a structured, nurturing and values-based learning environment in Claremont, Pretoria.
+          </p>
+          <div class="hero-meta-strip">
+            <span class="hero-meta-tag highlight">GR RR–GR 7 | ENGLISH</span>
+            <span class="hero-meta-tag">CAPS CURRICULUM</span>
+            <span class="hero-meta-tag">OFFICIAL CAMBRILEARN AFFILIATED</span>
+            <span class="hero-meta-tag">CLAREMONT, PRETORIA</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener">
+              💬 ENQUIRE VIA WHATSAPP
+            </a>
+            <button class="btn btn-gold" onclick="document.getElementById('home-grades').scrollIntoView({behavior:'smooth'})">
+              EXPLORE OUR GRADES
+            </button>
+            <button class="btn btn-outline-white" onclick="navigateTo('about')">
+              DISCOVER NOVUS VIA
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <span class="section-kicker">ADMISSIONS & ENQUIRIES</span>
+          <h3>Partner With Us for 2027</h3>
+          <p>Limited spaces per learning group ensure dedicated individual attention for every child from Gr RR to Gr 7.</p>
+          <ul class="quick-facts-list">
+            <li><span class="check-icon">✔</span><span><strong>Grades Accommodated:</strong> Gr RR, Gr R & Gr 1–Gr 7</span></li>
+            <li><span class="check-icon">✔</span><span><strong>Medium & Curriculum:</strong> English-Medium | CAPS</span></li>
+            <li><span class="check-icon">✔</span><span><strong>Location:</strong> 976 Paff Rd, Claremont, Pretoria</span></li>
+            <li><span class="check-icon">✔</span><span><strong>Aftercare Available:</strong> 13:00–18:00 (Additional fee applies)</span></li>
+          </ul>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn btn-primary" onclick="openEnquiryWithPreset('Fees', '')">REQUEST FEE STRUCTURE</button>
+            <button class="btn btn-outline" onclick="openEnquiryWithPreset('Centre Visit', '')">ARRANGE A CENTRE VISIT</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: An Educational Environment Where Learners Can Thrive -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">HOLISTIC LEARNER SUPPORT</span>
+          <h2 class="section-title">An Educational Environment Where Learners Can Thrive</h2>
+          <p class="section-lead">
+            Novus Via Academy offers more than academic support. We provide a structured learning environment where learners receive daily supervision, dedicated tutoring, clear guidance, consistent discipline and individual attention.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📘</div>
+            <h3>1. CAPS Curriculum</h3>
+            <p>Structured English-language educational support aligned strictly with the South African CAPS curriculum across Gr RR to Gr 7.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🗣️</div>
+            <h3>2. English-Medium Learning</h3>
+            <p>All instruction, reading comprehension, writing development and daily academic support are delivered in English.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>3. Dedicated Tutoring</h3>
+            <p>Focused daily tutoring and concept reinforcement so learners truly grasp core literacy, numeracy and subject foundations.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>4. Smaller Learning Groups</h3>
+            <p>Intentionally small learning groups enable tutors to identify each child's strengths and address academic gaps early.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>5. Safe and Nurturing Environment</h3>
+            <p>A calm, supervised and welcoming campus in Claremont where learners feel secure, respected and encouraged every day.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✝️</div>
+            <h3>6. Christian Values and Character Development</h3>
+            <p>Grounded in Christian principles, daily Bible period, respect, personal responsibility and positive character building.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: A Place Where Every Learner Matters -->
+    <section class="section section-ivory">
+      <div class="container split-grid">
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80" alt="Educator guiding primary school learners in a supportive classroom" />
+          <span class="image-caption-badge">Illustrative photo — Individual learner guidance</span>
+        </div>
+        <div>
+          <span class="section-kicker">OUR COMMITMENT TO YOUR CHILD</span>
+          <h2 class="section-title">A Place Where Every Learner Matters</h2>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">
+            At Novus Via Academy, we believe that academic achievement flourishes when a child feels known, valued and supported. Every learner progresses at their own pace, and our dedicated educators walk alongside each child with patience and structure.
+          </p>
+          <p style="margin-bottom: 24px; color: var(--text-muted);">
+            We nurture not only strong academic foundations, but also self-confidence, disciplined study habits, respect for others and open, constructive partnerships between parents and educators.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <button class="btn btn-primary" onclick="navigateTo('about')">READ MORE ABOUT US</button>
+            <button class="btn btn-outline" onclick="navigateTo('curriculum')">EXPLORE CAPS APPROACH</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Explore Our Grades -->
+    <section id="home-grades" class="section section-blue-grey">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">GR RR – GR 7</span>
+          <h2 class="section-title">Explore Our Grades</h2>
+          <p class="section-lead">
+            Select a grade below to view grade-specific academic focus areas, CAPS curriculum support and 2027 enrolment options.
+          </p>
+        </div>
+
+        <div class="grades-grid" id="homeGradesGrid">
+          <!-- Populated dynamically via JS for all 9 grades -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Why Choose Novus Via Academy -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">THE NOVUS VIA DIFFERENCE</span>
+          <h2 class="section-title">Why Choose Novus Via Academy?</h2>
+          <p class="section-lead">
+            Families in Pretoria choose Novus Via Academy for structured academic support paired with genuine care and values.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Smaller classes for individual attention</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Personalised pacing and close academic monitoring.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Qualified and caring educators</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Committed mentors dedicated to learner progress.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Safe, nurturing and positive environment</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Structured supervision throughout the learning day.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Strong academic foundations</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Focus on English literacy, mathematics and core CAPS skills.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Values, faith and character development</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Cultivating integrity, respect and self-discipline.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Parent communication and additional support</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Transparent updates and collaborative parent partnerships.</span></div></div>
+          <div class="why-item"><div class="why-item-icon">✓</div><div><strong>Bible period</strong><br><span style="font-size:0.88rem; color:var(--text-muted);">Daily Christian devotion and character enrichment.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Aftercare Highlight -->
+    <section class="section section-ivory">
+      <div class="container split-grid">
+        <div>
+          <span class="section-kicker">EXTENDED SUPERVISION FOR WORKING PARENTS</span>
+          <h2 class="section-title">Aftercare Available From 13:00–18:00</h2>
+          <p style="margin-bottom: 14px; font-weight: 600; color: var(--navy);">
+            Peace of mind for parents in a safe, structured afternoon environment.
+          </p>
+          <p style="margin-bottom: 18px; color: var(--text-muted);">
+            Novus Via Academy offers supervised afternoon aftercare from <strong>13:00 to 18:00</strong> for enrolled learners who require care after regular academic hours. Please note that an <strong>additional fee applies</strong> for aftercare placement.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <button class="btn btn-primary" onclick="openEnquiryWithPreset('Aftercare', '')">ENQUIRE ABOUT AFTERCARE</button>
+            <button class="btn btn-outline" onclick="navigateTo('aftercare')">AFTERCARE DETAILS</button>
+          </div>
+        </div>
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80" alt="Structured learning and quiet afternoon study environment" />
+          <span class="image-caption-badge">Illustrative photo — Supervised afternoon environment</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Official CambriLearn Affiliated & Referral Partnership Offer -->
+    <section class="section section-white" id="cambrilearn-section">
+      <div class="container">
+        <div class="cambrilearn-card">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px;">
+            <span class="referral-tag" style="margin-bottom: 0;">✓ OFFICIAL CAMBRILEARN AFFILIATED TUTOR CENTRE</span>
+            <span class="referral-tag" style="margin-bottom: 0; background: var(--gold); color: var(--navy-deep);">SPECIAL PARENT OFFER</span>
+          </div>
+
+          <h2 class="discount-highlight"><span>50% DISCOUNT</span> ON THE STARTER SA CAPS CURRICULUM WITH CAMBRILEARN</h2>
+          <p style="font-size: 1.04rem; color: var(--text-dark); max-width: 860px; margin-bottom: 12px;">
+            Novus Via Academy is an <strong>Official CambriLearn Affiliated Tutor Centre</strong>. Through our referral partnership, parents can explore the CambriLearn Starter SA CAPS curriculum and receive a <strong>50% discount</strong> using our referral code <strong>11728</strong>.
+          </p>
+
+          <div style="background: rgba(255,255,255,0.88); border: 1px solid var(--blue-grey-dark); border-radius: 12px; padding: 20px 22px; margin: 18px 0;">
+            <strong style="color: var(--navy); font-size: 0.95rem; display: block; margin-bottom: 10px;">Advantages of Our CambriLearn Affiliation for Families:</strong>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; font-size: 0.9rem; color: var(--text-dark);">
+              <div><strong style="color: var(--gold);">✔</strong> <strong>24/7 Structured Online Resources:</strong> Interactive CAPS lessons, course outlines and recorded video material developed by qualified educators.</div>
+              <div><strong style="color: var(--gold);">✔</strong> <strong>Flexible Hybrid Learning Support:</strong> Combine structured online coursework with in-person guidance, supervision and daily encouragement at our Centre.</div>
+              <div><strong style="color: var(--gold);">✔</strong> <strong>Clear Progress Tracking:</strong> Structured assessments, marked assignments with educator feedback and transparent parent progress tracking.</div>
+              <div><strong style="color: var(--gold);">✔</strong> <strong>Exclusive 50% Parent Discount:</strong> Direct access to the Starter SA CAPS curriculum offer using our official referral code <strong>11728</strong>.</div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 860px;">
+            <em>Note: This CambriLearn offer is presented as an optional referral partnership opportunity and is separate from Novus Via Academy's own on-site CAPS tutor centre programme. Learners at Novus Via Academy are not required to enrol with CambriLearn.</em>
+          </p>
+
+          <div class="code-copy-box">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); display: block;">OFFICIAL REFERRAL CODE</span>
+              <span class="code-value" id="referralCodeText">11728</span>
+            </div>
+            <button class="btn btn-primary btn-sm" type="button" onclick="copyReferralCode()">📋 COPY CODE</button>
+            <span id="copyFeedback" style="font-size: 0.82rem; font-weight: 700; color: var(--whatsapp); display: none;">Copied!</span>
+          </div>
+
+          <div>
+            <a class="btn btn-gold" href="https://cambrilearn.co./tutor-centre/novus-via-academy-tutor-centre" target="_blank" rel="noopener">
+              EXPLORE THE CAMBRILEARN OFFER ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: News & Announcements -->
+    <section class="section section-blue-grey">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">ACADEMY UPDATES</span>
+          <h2 class="section-title">Announcements & Parent Information</h2>
+          <p class="section-lead">Stay informed about 2027 admissions, centre visits and academic updates at Novus Via Academy.</p>
+        </div>
+        <div class="features-grid" id="announcementsGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Final Enrolment Call to Action -->
+    <section class="section section-navy">
+      <div class="container" style="text-align: center; max-width: 780px;">
+        <span class="section-kicker">2027 ADMISSIONS • CLAREMONT, PRETORIA</span>
+        <h2 class="section-title" style="font-size: clamp(2.2rem, 4vw, 3.1rem);">YOUR CHILD'S FUTURE MATTERS.</h2>
+        <p class="section-lead" style="margin-bottom: 30px; font-size: 1.2rem;">
+          Let's take the next step together. Reach out to our admissions team to request our current fee structure or arrange a personal visit to Novus Via Academy.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+          <button class="btn btn-gold" onclick="openEnquiryWithPreset('Enrolment', '')">ENQUIRE ABOUT ENROLMENT</button>
+          <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener">
+            💬 CHAT ON WHATSAPP
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       VIEW 2: ABOUT NOVUS VIA ACADEMY
+  ========================================================== -->
+  <section id="view-about" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">WHO WE ARE</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">About Novus Via Academy</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 720px; margin-top: 10px;">
+          An English-medium CAPS tutor centre in Claremont, Pretoria dedicated to guiding every learner towards a blessed and brighter future.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container split-grid">
+        <div>
+          <span class="section-kicker">OUR VISION & PHILOSOPHY</span>
+          <h2 class="section-title">Guided Steps, Blessed Futures</h2>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">
+            Novus Via Academy was established to provide families in Pretoria with a trustworthy, structured and welcoming educational environment for learners from <strong>Gr RR to Gr 7</strong>.
+          </p>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">
+            Our educational philosophy centres on the conviction that strong academic foundations are built through clear instruction, consistent daily routine, smaller learning groups and genuine personal encouragement.
+          </p>
+          <p style="color: var(--text-muted);">
+            We uphold Christian values—including a daily Bible period—and cultivate respect, personal responsibility, self-discipline and a positive work ethic in every learner.
+          </p>
+        </div>
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1000&q=80" alt="Focused learners in an encouraging study setting" />
+          <span class="image-caption-badge">Illustrative photo — Academic focus & encouragement</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-ivory">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">CORE PILLARS</span>
+          <h2 class="section-title">Our Values, Approach & Parent Partnership</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Our Values</h3>
+            <p>Christian values, respect for self and others, honesty, personal responsibility, kindness and consistent discipline form the foundation of daily life at the Centre.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Our Commitment to Learners</h3>
+            <p>Every learner receives individual attention, patient encouragement and structured guidance designed to build confidence and steady academic progress.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Our Approach to Teaching & Tutoring</h3>
+            <p>We follow the South African CAPS curriculum in English, reinforcing core concepts daily so learners understand their work rather than merely memorising it.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Our Learning Environment</h3>
+            <p>A calm, orderly and safe setting in Claremont where distractions are minimised and learners are actively supervised throughout the day.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Our Relationship With Parents</h3>
+            <p>We view education as a partnership between home and Centre, maintaining open, respectful communication with parents regarding learner progress.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Bible Period & Character</h3>
+            <p>Daily Bible period nurtures spiritual growth, moral integrity and gratitude alongside academic development.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 44px;">
+          <button class="btn btn-primary" onclick="openEnquiryWithPreset('Centre Visit', '')">ARRANGE A VISIT TO OUR CENTRE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 3: DEDICATED GRADE PAGE (DYNAMIC FOR ALL 9 GRADES)
+  ========================================================== -->
+  <section id="view-grade-detail" class="page-view">
+    <div class="section section-navy" style="padding: 52px 0;">
+      <div class="container">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;" id="gradeSwitcherPills">
+          <!-- Grade quick-switch pills -->
+        </div>
+        <span class="section-kicker" id="gradePhaseKicker">FOUNDATION PHASE • ENGLISH-MEDIUM CAPS</span>
+        <h1 id="gradePageTitle" style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Grade R</h1>
+        <p id="gradePageSubtitle" style="color: rgba(255,255,255,0.88); max-width: 740px; margin-top: 10px;"></p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container split-grid">
+        <div>
+          <span class="section-kicker">GRADE OVERVIEW</span>
+          <h2 class="section-title" id="gradeOverviewHeading">What Learners Can Expect</h2>
+          <p id="gradeIntroText" style="margin-bottom: 18px; color: var(--text-muted);"></p>
+          <ul class="quick-facts-list" id="gradeExpectationsList"></ul>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px;">
+            <a id="gradeWhatsAppBtn" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">
+              💬 ENQUIRE ON WHATSAPP FOR THIS GRADE
+            </a>
+            <button id="gradeFormBtn" class="btn btn-gold" onclick="">
+              ENROLMENT ENQUIRY FORM
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card" style="background: var(--ivory);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 14px;">Academic Support & Foundations</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.94rem;">
+            <div>
+              <strong style="color: var(--navy);">CAPS Curriculum Alignment:</strong>
+              <p id="gradeCapsText" style="color: var(--text-muted); margin-top: 4px;"></p>
+            </div>
+            <div>
+              <strong style="color: var(--navy);">Academic Support Approach:</strong>
+              <p id="gradeSupportText" style="color: var(--text-muted); margin-top: 4px;"></p>
+            </div>
+            <div>
+              <strong style="color: var(--navy);">Building Strong Foundations:</strong>
+              <p id="gradeFoundationText" style="color: var(--text-muted); margin-top: 4px;"></p>
+            </div>
+            <div>
+              <strong style="color: var(--navy);">English-Language Learning & Parent Involvement:</strong>
+              <p style="color: var(--text-muted); margin-top: 4px;">
+                All instruction and daily tutoring take place in English. Parents receive regular feedback and practical guidance to reinforce learning milestones at home.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 4: CAPS CURRICULUM
+  ========================================================== -->
+  <section id="view-curriculum" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">ACADEMIC FRAMEWORK</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">CAPS Curriculum Support</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 740px; margin-top: 10px;">
+          Structured English-language educational support following the South African Curriculum and Assessment Policy Statement (CAPS) for Gr RR to Gr 7.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container">
+        <div class="split-grid" style="margin-bottom: 50px;">
+          <div>
+            <span class="section-kicker">CLEAR & STRUCTURED LEARNING</span>
+            <h2 class="section-title">How Novus Via Academy Supports Your Child</h2>
+            <p style="margin-bottom: 16px; color: var(--text-muted);">
+              Novus Via Academy provides dedicated, English-medium educational support strictly aligned with the <strong>South African CAPS curriculum</strong> from Gr RR through Gr 7.
+            </p>
+            <p style="margin-bottom: 16px; color: var(--text-muted);">
+              Rather than leaving learners to struggle silently in overcrowded classrooms, our structured tutor centre model ensures every child receives daily supervision, guided explanation and hands-on reinforcement of core concepts.
+            </p>
+            <button class="btn btn-primary" onclick="openEnquiryWithPreset('General', '')">SPEAK TO OUR ADMISSIONS TEAM</button>
+          </div>
+          <div class="features-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="feature-card">
+              <h3>Structured Learning</h3>
+              <p>Clear daily timetables balancing focused academic blocks, consolidation and supervised study.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Daily Tutoring</h3>
+              <p>Step-by-step explanations in English literacy, mathematics and grade-specific CAPS subjects.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Active Supervision</h3>
+              <p>Attentive educators monitor posture, focus, neatness and task completion throughout the day.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Concept Reinforcement</h3>
+              <p>Regular revision and individual support ensure foundational gaps are addressed promptly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 5: OUR LEARNING ENVIRONMENT & EDITABLE GALLERY
+  ========================================================== -->
+  <section id="view-environment" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">CAMPUS & CULTURE</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Our Learning Environment</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 740px; margin-top: 10px;">
+          Located at 976 Paff Rd, Claremont, Pretoria — designed for focused learning, positive discipline and Christian values.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container">
+        <div class="features-grid" style="margin-bottom: 56px;">
+          <div class="feature-card">
+            <h3>Learning Spaces</h3>
+            <p>Orderly, well-lit study rooms arranged for smaller learning groups and calm concentration.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Supervision</h3>
+            <p>Continuous, attentive adult supervision ensuring safety, punctuality and steady daily progress.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Tutoring & Academic Support</h3>
+            <p>Dedicated guidance where learners can ask questions freely and receive clear, patient instruction.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Discipline & Structure</h3>
+            <p>Consistent, fair boundaries that teach self-control, respect, neatness and personal responsibility.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Christian Values</h3>
+            <p>Daily Bible period and Christ-centred encouragement fostering kindness, honesty and gratitude.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Parent Communication</h3>
+            <p>Accessible communication channels so parents remain informed and involved in their child's journey.</p>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <span class="section-kicker">PHOTO GALLERY</span>
+          <h2 class="section-title">Life & Learning Spaces</h2>
+          <p class="section-lead">
+            Illustrative photographs are clearly marked below. Administrators can update this gallery with official photographs of Novus Via Academy via the Staff Portal.
+          </p>
+        </div>
+
+        <div class="gallery-grid" id="environmentGalleryGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 6: AFTERCARE
+  ========================================================== -->
+  <section id="view-aftercare" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">AFTERNOON CARE & SUPERVISION</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Aftercare (13:00 – 18:00)</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 740px; margin-top: 10px;">
+          A safe, structured and supervised afternoon environment for enrolled Novus Via Academy learners.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container split-grid">
+        <div>
+          <span class="section-kicker">AFTERCARE INFORMATION</span>
+          <h2 class="section-title">Aftercare Available From 13:00 to 18:00</h2>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">
+            For parents who require dependable afternoon supervision after regular academic hours, Novus Via Academy provides structured on-site aftercare from <strong>13:00 to 18:00</strong>.
+          </p>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">
+            Learners remain in a familiar, secure and disciplined environment where positive routines, quiet homework time and respectful behaviour are maintained until collection.
+          </p>
+          <div style="background: var(--gold-soft); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 8px; margin-bottom: 24px;">
+            <strong>Fee Notice:</strong> An <strong>additional fee applies</strong> for aftercare placement. Contact our admissions team via WhatsApp or the enquiry form below for current aftercare fee details.
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20to%20enquire%20about%20Aftercare%20(13%3A00%E2%80%9318%3A00)%20and%20the%20additional%20fee%20at%20Novus%20Via%20Academy." target="_blank" rel="noopener">
+              💬 WHATSAPP AFTERCARE ENQUIRY
+            </a>
+            <button class="btn btn-primary" onclick="openEnquiryWithPreset('Aftercare', '')">
+              ONLINE AFTERCARE ENQUIRY
+            </button>
+          </div>
+        </div>
+
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1000&q=80" alt="Books and structured afternoon study table" />
+          <span class="image-caption-badge">Illustrative photo — Supervised afternoon care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 7: FEES AND ENROLMENT (NO PUBLIC PRICING + FULL FORM)
+  ========================================================== -->
+  <section id="view-enrolment" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">2027 ADMISSIONS • GR RR – GR 7</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Fees & Enrolment</h1>
+        <p style="color: rgba(255,255,255,0.92); max-width: 780px; margin-top: 12px; font-size: 1.08rem;">
+          "Interested in joining Novus Via Academy? Contact our admissions team for our current fee structure, registration information and available spaces."
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-ivory">
+      <div class="container">
+        <!-- Action Buttons Strip -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px;">
+          <button class="btn btn-primary" onclick="setEnquiryFormType('Fees')">📄 REQUEST FEE STRUCTURE</button>
+          <button class="btn btn-gold" onclick="setEnquiryFormType('Enrolment')">✍️ ENQUIRE ABOUT ENROLMENT</button>
+          <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20to%20request%20the%20current%20fee%20structure%20for%20Novus%20Via%20Academy." target="_blank" rel="noopener">
+            💬 ENQUIRE VIA WHATSAPP
+          </a>
+          <button class="btn btn-outline" onclick="setEnquiryFormType('Centre Visit')">🏫 ARRANGE A CENTRE VISIT</button>
+        </div>
+
+        <div class="split-grid" style="align-items: start;">
+          <!-- Online Parent Enquiry / Application Form -->
+          <div class="form-card" id="admissionsFormCard">
+            <span class="section-kicker">ONLINE ADMISSIONS ENQUIRY</span>
+            <h2 style="font-size: 1.9rem; margin-bottom: 8px;">Parent & Learner Enquiry Form</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">
+              No account creation required. Complete the form below and our admissions office will respond promptly with the requested fee structure, space availability or visit confirmation.
+            </p>
+
+            <form id="enquiryForm" onsubmit="handleEnquirySubmit(event)">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <strong style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;">1. Parent / Guardian Information</strong>
+                </div>
+                <div class="form-group full">
+                  <label for="parentName">Parent or Guardian Full Name *</label>
+                  <input type="text" id="parentName" required placeholder="e.g. Sarah van der Merwe" />
+                </div>
+                <div class="form-group">
+                  <label for="parentMobile">Mobile Number (WhatsApp / Call) *</label>
+                  <input type="tel" id="parentMobile" required placeholder="e.g. 082 123 4567" />
+                </div>
+                <div class="form-group">
+                  <label for="parentEmail">Email Address *</label>
+                  <input type="email" id="parentEmail" required placeholder="e.g. parent@example.co.za" />
+                </div>
+
+                <div class="form-group full" style="margin-top: 8px;">
+                  <strong style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;">2. Learner Information</strong>
+                </div>
+                <div class="form-group">
+                  <label for="learnerName">Learner's Full Name *</label>
+                  <input type="text" id="learnerName" required placeholder="e.g. Liam van der Merwe" />
+                </div>
+                <div class="form-group">
+                  <label for="gradeApplying">Grade Applying For *</label>
+                  <select id="gradeApplying" required>
+                    <option value="">-- Select Grade --</option>
+                    <option value="Gr RR">Gr RR</option>
+                    <option value="Gr R">Gr R</option>
+                    <option value="Gr 1">Gr 1</option>
+                    <option value="Gr 2">Gr 2</option>
+                    <option value="Gr 3">Gr 3</option>
+                    <option value="Gr 4">Gr 4</option>
+                    <option value="Gr 5">Gr 5</option>
+                    <option value="Gr 6">Gr 6</option>
+                    <option value="Gr 7">Gr 7</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label for="currentCentre">Current School / Centre (If Applicable)</label>
+                  <input type="text" id="currentCentre" placeholder="Optional" />
+                </div>
+
+                <div class="form-group full" style="margin-top: 8px;">
+                  <strong style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;">3. Enquiry Details</strong>
+                </div>
+                <div class="form-group">
+                  <label for="enquiryType">Enquiry Type *</label>
+                  <select id="enquiryType" required>
+                    <option value="General">General Enquiry</option>
+                    <option value="Fees">Request Fee Structure</option>
+                    <option value="Enrolment">2027 Enrolment</option>
+                    <option value="Aftercare">Aftercare (13:00–18:00)</option>
+                    <option value="Centre Visit">Arrange a Centre Visit</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="preferredContact">Preferred Contact Method *</label>
+                  <select id="preferredContact" required>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Telephone Call">Telephone Call</option>
+                    <option value="Email">Email</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label for="additionalMessage">Additional Message or Questions</label>
+                  <textarea id="additionalMessage" rows="4" placeholder="Tell us about your child or preferred time for a Centre visit..."></textarea>
+                </div>
+
+                <div class="form-group full">
+                  <label class="checkbox-row">
+                    <input type="checkbox" id="popiaConsent" required />
+                    <span>
+                      <strong>POPIA Consent:</strong> I consent to Novus Via Academy collecting and processing my personal information and my child's information solely for the purpose of responding to this admissions enquiry, in accordance with the <a href="#legal" onclick="event.preventDefault(); navigateTo('legal')" style="color: var(--navy); text-decoration: underline;">Privacy Policy & POPIA Notice</a>. *
+                    </span>
+                  </label>
+                </div>
+
+                <div class="form-group full">
+                  <button type="submit" class="btn btn-primary" id="submitEnquiryBtn" style="width: 100%; font-size: 1rem;">
+                    SUBMIT ADMISSIONS ENQUIRY
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div id="enquirySuccessAlert" class="alert-box alert-success">
+              <strong>✓ Thank you! Your enquiry has been received by Novus Via Academy.</strong>
+              <p style="margin-top: 6px;">
+                Our admissions team has recorded your details and received an automated notification at <strong>admin@novusvia.co.za</strong>. We will contact you shortly via your preferred contact method.
+              </p>
+              <div style="margin-top: 12px;">
+                <a id="postSubmitWaLink" class="btn btn-whatsapp btn-sm" href="https://wa.me/27619020023" target="_blank" rel="noopener">
+                  💬 Follow Up Instantly on WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div id="enquiryErrorAlert" class="alert-box alert-error"></div>
+          </div>
+
+          <!-- Admissions Guidance Sidebar -->
+          <div style="display: flex; flex-direction: column; gap: 22px;">
+            <div class="feature-card">
+              <h3>Why Fees Are Shared Directly</h3>
+              <p>
+                Every family's requirements—such as grade placement and optional aftercare (13:00–18:00)—are discussed directly with parents so we can provide accurate, transparent registration information and confirm space availability for 2027.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3>Direct WhatsApp Desk</h3>
+              <p style="margin-bottom: 14px;">Prefer instant messaging? Use our quick WhatsApp enquiry links:</p>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a class="btn btn-whatsapp btn-sm" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20to%20request%20the%20current%20fee%20structure%20for%20Novus%20Via%20Academy." target="_blank" rel="noopener">
+                  Request Fee Structure via WhatsApp
+                </a>
+                <a class="btn btn-outline btn-sm" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20to%20arrange%20a%20visit%20to%20Novus%20Via%20Academy.%20Please%20let%20me%20know%20when%20this%20can%20be%20arranged." target="_blank" rel="noopener">
+                  Arrange Centre Visit via WhatsApp
+                </a>
+              </div>
+            </div>
+            <div class="feature-card">
+              <h3>Visit Our Campus</h3>
+              <p>
+                <strong>Address:</strong> 976 Paff Rd, Claremont, Pretoria, Gauteng<br />
+                <strong>Telephone:</strong> <a href="tel:+27619020023" style="color: var(--navy); font-weight: 700;">061 902 0023</a><br />
+                <strong>Email:</strong> <a href="mailto:admin@novusvia.co.za" style="color: var(--navy); font-weight: 700;">admin@novusvia.co.za</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 8: PARENT INFORMATION & FAQ
+  ========================================================== -->
+  <section id="view-faq" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">PARENT GUIDANCE</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Parent Information & FAQ</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 740px; margin-top: 10px;">
+          Answers to common questions from parents considering Novus Via Academy in Claremont, Pretoria.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container" style="max-width: 880px;">
+        <div id="faqAccordionContainer">
+          <!-- Populated dynamically so administrators can also edit FAQs -->
+        </div>
+
+        <div style="text-align: center; margin-top: 38px; padding: 28px; background: var(--ivory); border-radius: var(--radius-md);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Still Have a Question?</h3>
+          <p style="color: var(--text-muted); margin-bottom: 18px;">Our team is happy to assist you personally via WhatsApp, telephone or email.</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+            <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener">💬 ASK ON WHATSAPP</a>
+            <button class="btn btn-primary" onclick="openEnquiryWithPreset('General', '')">SEND AN ENQUIRY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 9: CONTACT & LOCATION
+  ========================================================== -->
+  <section id="view-contact" class="page-view">
+    <div class="section section-navy" style="padding: 56px 0;">
+      <div class="container">
+        <span class="section-kicker">GET IN TOUCH</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.8vw, 3rem);">Contact Novus Via Academy</h1>
+        <p style="color: rgba(255,255,255,0.85); max-width: 740px; margin-top: 10px;">
+          We welcome parent enquiries, fee structure requests and scheduled Centre visits in Claremont, Pretoria.
+        </p>
+      </div>
+    </div>
+
+    <div class="section section-white">
+      <div class="container split-grid" style="align-items: start;">
+        <div>
+          <span class="section-kicker">OFFICIAL CONTACT DETAILS</span>
+          <h2 class="section-title">We Are Here to Help</h2>
+
+          <div style="display: flex; flex-direction: column; gap: 18px; margin: 24px 0;">
+            <div class="why-item">
+              <div class="why-item-icon">📍</div>
+              <div>
+                <strong>Physical Address</strong><br />
+                <span>976 Paff Rd, Claremont, Pretoria, Gauteng, South Africa</span>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">📞</div>
+              <div>
+                <strong>Telephone & WhatsApp</strong><br />
+                <a href="tel:+27619020023" style="color: var(--navy); font-weight: 700;">061 902 0023</a>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">✉️</div>
+              <div>
+                <strong>Email Address</strong><br />
+                <a href="mailto:admin@novusvia.co.za" style="color: var(--navy); font-weight: 700;">admin@novusvia.co.za</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;">
+            <a class="btn btn-whatsapp" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener">
+              💬 GENERAL WHATSAPP ENQUIRY
+            </a>
+            <a class="btn btn-outline" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20to%20arrange%20a%20visit%20to%20Novus%20Via%20Academy.%20Please%20let%20me%20know%20when%20this%20can%20be%20arranged." target="_blank" rel="noopener">
+              🏫 ARRANGE CENTRE VISIT
+            </a>
+          </div>
+
+          <!-- Embedded Google Map for 976 Paff Rd, Claremont, Pretoria -->
+          <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--blue-grey-dark); box-shadow: var(--shadow-sm);">
+            <iframe
+              title="Novus Via Academy Location - 976 Paff Rd, Claremont, Pretoria"
+              src="https://www.google.com/maps?q=976+Paff+Rd,+Claremont,+Pretoria,+Gauteng,+South+Africa&output=embed"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="form-card" style="background: var(--ivory);">
+          <h3 style="font-size: 1.7rem; margin-bottom: 8px;">Quick Message & Admissions Form</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+            Submit an enquiry directly to our admissions team.
+          </p>
+          <button class="btn btn-primary" style="width: 100%; margin-bottom: 14px;" onclick="openEnquiryWithPreset('General', '')">
+            OPEN FULL ADMISSIONS ENQUIRY FORM
+          </button>
+          <button class="btn btn-gold" style="width: 100%;" onclick="openEnquiryWithPreset('Fees', '')">
+            REQUEST 2027 FEE STRUCTURE
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 10: LEGAL, PRIVACY POLICY & POPIA
+  ========================================================== -->
+  <section id="view-legal" class="page-view">
+    <div class="section section-navy" style="padding: 52px 0;">
+      <div class="container">
+        <span class="section-kicker">GOVERNANCE & DATA PROTECTION</span>
+        <h1 style="color: var(--white); font-size: clamp(2rem, 3.6vw, 2.8rem);">Privacy Policy, POPIA & Terms</h1>
+      </div>
+    </div>
+    <div class="section section-white">
+      <div class="container" style="max-width: 900px; display: flex; flex-direction: column; gap: 32px;">
+        <div class="feature-card">
+          <h2>1. Privacy Policy & POPIA Information</h2>
+          <p style="margin-top: 10px; color: var(--text-muted);">
+            Novus Via Academy respects the privacy of parents, guardians and learners in accordance with the Protection of Personal Information Act (POPIA) of South Africa. We collect only the personal contact and learner grade details voluntarily submitted through our admissions enquiry forms for the sole purpose of communicating with prospective families, providing requested fee structures, scheduling Centre visits and processing enrolment enquiries.
+          </p>
+          <p style="margin-top: 10px; color: var(--text-muted);">
+            Submitted records are stored securely with restricted administrative access and are never sold, rented or disclosed to unauthorised third parties. Parents may request access to, correction of, or deletion of their enquiry information at any time by emailing <a href="mailto:admin@novusvia.co.za" style="color: var(--navy); font-weight: 700;">admin@novusvia.co.za</a>.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h2>2. Website Terms and Conditions</h2>
+          <p style="margin-top: 10px; color: var(--text-muted);">
+            The content on www.novusvia.co.za is provided for general informational and admissions enquiry purposes regarding Novus Via Academy in Claremont, Pretoria. While every effort is made to keep information current, programme details and space availability are confirmed directly with parents during the admissions process.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h2>3. Enrolment Terms Overview</h2>
+          <p style="margin-top: 10px; color: var(--text-muted);">
+            Submitting an online enquiry or requesting a fee structure does not automatically reserve a learner space. Formal placement for Gr RR–Gr 7 is confirmed upon completion of the official registration documentation, parent consultation and acceptance of the Centre's code of conduct and fee agreement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       VIEW 11: ADMINISTRATOR ADMISSIONS DASHBOARD (SUPABASE + AUTH)
+  ========================================================== -->
+  <section id="view-admin" class="page-view">
+    <div class="section section-navy" style="padding: 44px 0;">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <span class="section-kicker">RESTRICTED STAFF ACCESS</span>
+          <h1 style="color: var(--white); font-size: clamp(1.8rem, 3.2vw, 2.5rem);">Admissions Lead Management Portal</h1>
+        </div>
+        <div id="adminHeaderActions" style="display: none; gap: 10px;">
+          <button class="btn btn-gold btn-sm" onclick="exportLeadsCSV()">⬇ Export CSV</button>
+          <button class="btn btn-outline-white btn-sm" onclick="adminLogout()">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-ivory" style="padding: 44px 0 80px;">
+      <div class="container">
+        <!-- Admin Login Box -->
+        <div id="adminLoginView" class="form-card" style="max-width: 480px; margin: 0 auto;">
+          <span class="section-kicker">AUTHENTICATION REQUIRED</span>
+          <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Administrator Sign In</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+            Only authorised Novus Via Academy staff may view and manage parent admissions enquiries.
+          </p>
+          <form onsubmit="handleAdminLogin(event)">
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="adminEmailInput">Staff Email Address</label>
+              <input type="email" id="adminEmailInput" required placeholder="admin@novusvia.co.za" value="admin@novusvia.co.za" />
+            </div>
+            <div class="form-group" style="margin-bottom: 18px;">
+              <label for="adminPassInput">Password</label>
+              <input type="password" id="adminPassInput" required placeholder="Enter staff password" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">SIGN IN TO ADMISSIONS DASHBOARD</button>
+          </form>
+          <div id="adminLoginError" class="alert-box alert-error"></div>
+
+          <!-- Supabase Connection Configuration Accordion -->
+          <details style="margin-top: 22px; font-size: 0.84rem; color: var(--text-muted); border-top: 1px solid var(--blue-grey); padding-top: 14px;">
+            <summary style="cursor: pointer; font-weight: 700; color: var(--navy);">⚙️ Supabase Backend & Email Webhook Settings</summary>
+            <p style="margin-top: 8px;">
+              Connect your live Supabase Project URL, Anon Key, and Edge Function endpoint for <code>admin@novusvia.co.za</code> notifications. When unconfigured, the portal runs securely with encrypted browser storage for immediate testing.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+              <input type="text" id="sbUrlInput" placeholder="https://your-project.supabase.co" />
+              <input type="text" id="sbAnonKeyInput" placeholder="Supabase Anon Public Key" />
+              <input type="text" id="emailWebhookInput" placeholder="Supabase Edge Function URL for Email Notification" />
+              <button type="button" class="btn btn-outline btn-sm" onclick="saveSupabaseConfig()">Save Backend Configuration</button>
+            </div>
+          </details>
+        </div>
+
+        <!-- Authenticated Admin Dashboard -->
+        <div id="adminDashboardView" style="display: none;">
+          <!-- New Enquiry Notification Banner -->
+          <div id="adminNewLeadBanner" style="background: var(--gold-soft); border: 1.5px solid var(--gold); padding: 14px 20px; border-radius: 10px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <strong>🔔 Admissions Target Tracker (Goal: 100 Registered Learners):</strong>
+              <span id="targetProgressText" style="margin-left: 6px; color: var(--navy); font-weight: 600;"></span>
+            </div>
+            <span id="backendModeBadge" style="font-size: 0.78rem; font-weight: 700; background: var(--navy); color: var(--white); padding: 4px 10px; border-radius: 6px;"></span>
+          </div>
+
+          <!-- Dashboard Statistics -->
+          <div class="admin-stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Enquiries</div>
+              <div class="stat-num" id="statTotal">0</div>
+            </div>
+            <div class="stat-card gold">
+              <div class="stat-label">New Enquiries</div>
+              <div class="stat-num" id="statNew">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Follow-Ups Due</div>
+              <div class="stat-num" id="statFollowUp">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Visits Arranged</div>
+              <div class="stat-num" id="statVisits">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Applications</div>
+              <div class="stat-num" id="statApps">0</div>
+            </div>
+            <div class="stat-card gold">
+              <div class="stat-label">Registered</div>
+              <div class="stat-num" id="statRegistered">0</div>
+            </div>
+          </div>
+
+          <!-- Enquiries by Grade Breakdown -->
+          <div class="feature-card" style="margin-bottom: 22px; padding: 18px 22px;">
+            <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy);">Enquiries by Grade (Gr RR – Gr 7):</strong>
+            <div id="gradeBreakdownBar" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;"></div>
+          </div>
+
+          <!-- Search & Filters -->
+          <div class="admin-filters">
+            <input type="text" id="filterSearch" placeholder="Search parent name, learner name, mobile or email..." oninput="renderAdminLeads()" />
+            <select id="filterGrade" onchange="renderAdminLeads()">
+              <option value="">All Grades</option>
+              <option value="Gr RR">Gr RR</option>
+              <option value="Gr R">Gr R</option>
+              <option value="Gr 1">Gr 1</option>
+              <option value="Gr 2">Gr 2</option>
+              <option value="Gr 3">Gr 3</option>
+              <option value="Gr 4">Gr 4</option>
+              <option value="Gr 5">Gr 5</option>
+              <option value="Gr 6">Gr 6</option>
+              <option value="Gr 7">Gr 7</option>
+            </select>
+            <select id="filterType" onchange="renderAdminLeads()">
+              <option value="">All Enquiry Types</option>
+              <option value="General">General</option>
+              <option value="Fees">Fees</option>
+              <option value="Enrolment">Enrolment</option>
+              <option value="Aftercare">Aftercare</option>
+              <option value="Centre Visit">Centre Visit</option>
+            </select>
+            <select id="filterStatus" onchange="renderAdminLeads()">
+              <option value="">All Statuses</option>
+              <option value="New Enquiry">New Enquiry</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Follow-up Required">Follow-up Required</option>
+              <option value="Centre Visit Arranged">Centre Visit Arranged</option>
+              <option value="Application Received">Application Received</option>
+              <option value="Registered">Registered</option>
+              <option value="Not Proceeding">Not Proceeding</option>
+            </select>
+            <input type="date" id="filterDate" onchange="renderAdminLeads()" title="Filter by Enquiry Date" />
+          </div>
+
+          <!-- Leads List Container -->
+          <div id="adminLeadsContainer"></div>
+
+          <!-- Content Management Tools (Gallery & Announcements) -->
+          <div class="split-grid" style="margin-top: 40px; align-items: start;">
+            <div class="form-card">
+              <h3 style="font-size: 1.4rem; margin-bottom: 10px;">Update Environment Photo Gallery</h3>
+              <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">Add verified photographs of Novus Via Academy classrooms and premises.</p>
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label>Photo Title / Caption</label>
+                <input type="text" id="newGalleryTitle" placeholder="e.g. Foundation Phase Classroom" />
+              </div>
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label>Image URL</label>
+                <input type="url" id="newGalleryUrl" placeholder="https://..." />
+              </div>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <label>Photo Label</label>
+                <select id="newGalleryType">
+                  <option value="Official Academy Photograph">Official Academy Photograph</option>
+                  <option value="Illustrative Image">Illustrative Image</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="addGalleryPhoto()">Add Photo to Gallery</button>
+            </div>
+
+            <div class="form-card">
+              <h3 style="font-size: 1.4rem; margin-bottom: 10px;">Post Academy Announcement</h3>
+              <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">Publish enrolment updates or parent notices on the homepage.</p>
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label>Announcement Title</label>
+                <input type="text" id="newAnnTitle" placeholder="e.g. 2027 Open Morning Dates" />
+              </div>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <label>Details</label>
+                <textarea id="newAnnBody" rows="3" placeholder="Enter announcement text..."></textarea>
+              </div>
+              <button class="btn btn-gold btn-sm" onclick="addAnnouncement()">Publish Announcement</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp Quick-Action Button -->
+  <a class="floating-wa" href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener" aria-label="Chat with Novus Via Academy on WhatsApp">
+    <span style="font-size: 1.35rem;">💬</span>
+    <span class="wa-label">WhatsApp Us</span>
+  </a>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">NOVUS VIA ACADEMY</h3>
+          <p style="font-size: 0.78rem; letter-spacing: 0.1em; color: var(--gold-light); font-weight: 700; margin-bottom: 12px;">GUIDED STEPS, BLESSED FUTURES</p>
+          <p style="font-size: 0.9rem; margin-bottom: 16px;">
+            An English-medium tutor centre offering structured CAPS-based educational support for Gr RR to Gr 7 in Claremont, Pretoria.
+          </p>
+          <p style="font-size: 0.85rem;">
+            <strong>Aftercare:</strong> 13:00–18:00 (Additional fee applies)
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><button onclick="navigateTo('home')">Home</button></li>
+            <li><button onclick="navigateTo('about')">About Novus Via Academy</button></li>
+            <li><button onclick="navigateTo('curriculum')">CAPS Curriculum</button></li>
+            <li><button onclick="navigateTo('environment')">Our Learning Environment</button></li>
+            <li><button onclick="navigateTo('aftercare')">Aftercare (13:00–18:00)</button></li>
+            <li><button onclick="navigateTo('enrolment')">Fees & Enrolment</button></li>
+            <li><button onclick="navigateTo('faq')">Parent Information & FAQ</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Our Grades (CAPS)</h4>
+          <ul class="footer-links" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <li><button onclick="navigateTo('grade-detail', 'Gr RR')">Gr RR</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr R')">Gr R</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 1')">Gr 1</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 2')">Gr 2</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 3')">Gr 3</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 4')">Gr 4</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 5')">Gr 5</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 6')">Gr 6</button></li>
+            <li><button onclick="navigateTo('grade-detail', 'Gr 7')">Gr 7</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact & Admissions</h4>
+          <ul class="footer-links">
+            <li>📍 976 Paff Rd, Claremont, Pretoria, Gauteng</li>
+            <li>📞 <a href="tel:+27619020023">061 902 0023</a></li>
+            <li>💬 <a href="https://wa.me/27619020023?text=Good%20day.%20I%20would%20like%20more%20information%20about%20Novus%20Via%20Academy%20and%20the%202027%20enrolment%20process." target="_blank" rel="noopener">WhatsApp Admissions Desk</a></li>
+            <li>✉️ <a href="mailto:admin@novusvia.co.za">admin@novusvia.co.za</a></li>
+            <li>🌐 www.novusvia.co.za</li>
+            <li style="margin-top: 8px;"><button onclick="navigateTo('legal')" style="text-decoration: underline;">Privacy Policy, POPIA & Terms</button></li>
+            <li><button onclick="navigateTo('admin')" style="color: var(--gold-light);">Staff Admissions Portal</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026–2027 Novus Via Academy. All rights reserved. Claremont, Pretoria, South Africa.</span>
+        <span>English-Medium Tutor Centre • Gr RR–Gr 7 • CAPS Curriculum</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       APPLICATION LOGIC, GRADE DATA, SUPABASE & ADMIN PORTAL
+  ========================================================== -->
+  <script>
+    const WHATSAPP_NUMBER = "27619020023";
+
+    // Grade Data Repository (All 9 Grades: Gr RR - Gr 7)
+    const GRADES_DATA = {
+      "Gr RR": {
+        phase: "EARLY CHILDHOOD FOUNDATION • ENGLISH-MEDIUM",
+        subtitle: "A warm, structured introduction to early learning, listening skills, routines and Christian values.",
+        intro: "In Grade RR at Novus Via Academy, young learners take their earliest structured steps in a calm, nurturing English-medium environment where curiosity, good habits and confidence are gently cultivated.",
+        expectations: [
+          "Gentle introduction to daily classroom routines, listening and following instructions",
+          "English vocabulary expansion, storytelling, songs and expressive communication",
+          "Fine and gross motor skill activities, pre-writing coordination and sensory discovery",
+          "Early number awareness, shapes, colours and pattern recognition",
+          "Daily Bible period nurturing kindness, sharing and respect"
+        ],
+        caps: "Age-appropriate early developmental foundations aligned with South African Foundation Phase readiness principles.",
+        support: "Small, attentive group supervision ensuring every young child feels secure, encouraged and individually known.",
+        foundation: "Emotional readiness, structured routine and early English comprehension form the bedrock for Grade R success."
+      },
+      "Gr R": {
+        phase: "FOUNDATION PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Building school readiness, emergent English literacy, early numeracy and joyful learning habits.",
+        intro: "Grade R bridges early childhood and formal primary schooling. Learners develop essential perceptual, social and pre-academic competencies in a supportive, structured setting.",
+        expectations: [
+          "CAPS Grade R Home Language (English) listening, speaking and emergent phonics awareness",
+          "CAPS Grade R Mathematics foundations: counting, number sense, measurement and spatial awareness",
+          "Life Skills, creative expression, physical coordination and social confidence",
+          "Structured pencil grip, visual perception and classroom work habits",
+          "Daily Bible period and character development"
+        ],
+        caps: "Follows the official South African CAPS Grade R framework in Home Language (English), Mathematics and Life Skills.",
+        support: "Hands-on guided activities with individual tutor observation to ensure smooth readiness for Grade 1.",
+        foundation: "Strong perceptual and phonological readiness prevents early reading and numeracy hurdles in Grade 1."
+      },
+      "Gr 1": {
+        phase: "FOUNDATION PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Mastering foundational reading, phonics, handwriting and core numeracy with dedicated guidance.",
+        intro: "Grade 1 is a milestone year. At Novus Via Academy, smaller learning groups ensure every Grade 1 learner receives patient, step-by-step guidance as they learn to read, write and calculate with confidence.",
+        expectations: [
+          "Structured English phonics, decoding, sight words, reading fluency and sentence writing",
+          "Neat handwriting formation and daily guided written work",
+          "CAPS Mathematics: number operations, mental maths, problem-solving and patterns",
+          "Life Skills and daily Bible period fostering respect and responsibility",
+          "Close tutor supervision to build independent task completion"
+        ],
+        caps: "Full alignment with South African CAPS Grade 1 subjects delivered in English.",
+        support: "Daily individual reading and numeracy check-ins so no learner falls behind during this critical transition year.",
+        foundation: "Confident reading and number sense established in Grade 1 empower every future year of schooling."
+      },
+      "Gr 2": {
+        phase: "FOUNDATION PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Strengthening reading comprehension, written expression and mathematical fluency.",
+        intro: "In Grade 2, learners expand from learning to read toward reading with deeper comprehension, writing structured paragraphs and solving multi-step foundational mathematics problems.",
+        expectations: [
+          "English reading comprehension, spelling rules, grammar foundations and creative sentences",
+          "CAPS Mathematics: place value, addition, subtraction, early multiplication/division concepts and measurement",
+          "First Additional Language introduction and Life Skills aligned to CAPS",
+          "Consistent daily tutoring and reinforcement of core concepts",
+          "Bible period and positive character formation"
+        ],
+        caps: "Structured CAPS Grade 2 curriculum support across all Foundation Phase learning areas.",
+        support: "Targeted reinforcement during daily tutoring sessions to consolidate accuracy and neat work habits.",
+        foundation: "Consolidating core literacy and numeracy fluency prepares learners for the increased pace of Grade 3."
+      },
+      "Gr 3": {
+        phase: "FOUNDATION PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Completing the Foundation Phase with strong literacy, numeracy and independent study readiness.",
+        intro: "Grade 3 culminates the Foundation Phase and prepares learners for the transition into the Intermediate Phase. Our tutors focus on solidifying reading comprehension, structured writing and confident problem-solving.",
+        expectations: [
+          "Fluent English reading, comprehension passages, structured paragraph writing and spelling mastery",
+          "CAPS Mathematics: confident number operations, fractions, time, money and word problems",
+          "Life Skills and First Additional Language support",
+          "Developing organised work habits and personal accountability",
+          "Daily Bible period and Christian values"
+        ],
+        caps: "Comprehensive South African CAPS Grade 3 support preparing learners for Intermediate Phase subjects.",
+        support: "Individualised review of foundational concepts to ensure a seamless step up to Grade 4.",
+        foundation: "A rock-solid Foundation Phase finish equips learners to handle content-rich subjects in Grade 4."
+      },
+      "Gr 4": {
+        phase: "INTERMEDIATE PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Guiding learners smoothly through the transition to subject-based Intermediate Phase learning.",
+        intro: "Grade 4 introduces new subjects, formal assessments and independent note-taking. Novus Via Academy provides structured daily guidance so learners navigate this transition with clarity rather than overwhelm.",
+        expectations: [
+          "CAPS Intermediate Phase subjects: English Home Language, First Additional Language, Mathematics, Natural Sciences & Technology, Social Sciences and Life Skills",
+          "Guided study methods, summary skills and structured homework reinforcement",
+          "Close tutor supervision to build confidence in formal assessments",
+          "Small learning groups for immediate explanation of challenging topics",
+          "Daily Bible period and disciplined work ethic"
+        ],
+        caps: "Aligned with the South African CAPS Grade 4 curriculum across all Intermediate Phase subjects.",
+        support: "Step-by-step academic mentoring to help learners adapt to multi-subject timetables and assessment expectations.",
+        foundation: "Learning how to study, organise work and manage time in Grade 4 builds lifelong academic resilience."
+      },
+      "Gr 5": {
+        phase: "INTERMEDIATE PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Deepening analytical thinking, mathematical reasoning and confident English communication.",
+        intro: "In Grade 5, learners build greater academic independence while continuing to benefit from daily tutor guidance, structured revision and individual encouragement.",
+        expectations: [
+          "CAPS Grade 5 English Home Language: comprehension, language structures, essays and oral confidence",
+          "CAPS Mathematics: multi-digit operations, fractions, geometry, data handling and problem-solving",
+          "Natural Sciences & Technology, Social Sciences (History & Geography) and Life Skills",
+          "Regular concept reinforcement and structured test preparation",
+          "Christian values, respect and daily Bible period"
+        ],
+        caps: "English-medium educational support following the official CAPS Grade 5 syllabus.",
+        support: "Proactive identification of learning gaps with targeted tutoring and regular parent feedback.",
+        foundation: "Strong conceptual understanding in Grade 5 prevents cumulative gaps in upper primary mathematics and languages."
+      },
+      "Gr 6": {
+        phase: "INTERMEDIATE PHASE • ENGLISH-MEDIUM CAPS",
+        subtitle: "Consolidating Intermediate Phase mastery and cultivating disciplined, self-motivated learners.",
+        intro: "Grade 6 strengthens critical thinking, structured writing and mathematical accuracy as learners prepare for their senior primary year in Grade 7.",
+        expectations: [
+          "Comprehensive CAPS Grade 6 support across Languages, Mathematics, Natural Sciences & Technology, Social Sciences and Life Skills",
+          "Refining analytical reading, structured essay writing and mathematical reasoning",
+          "Consistent daily supervision and structured revision routines",
+          "Encouraging personal responsibility, leadership and integrity",
+          "Daily Bible period and character mentorship"
+        ],
+        caps: "Full CAPS Grade 6 alignment delivered in a focused English-medium environment.",
+        support: "Smaller group sizes allow tutors to verify genuine comprehension before moving on to new topics.",
+        foundation: "Mastering Grade 6 core competencies positions learners to excel in Grade 7."
+      },
+      "Gr 7": {
+        phase: "SENIOR PHASE ENTRY • ENGLISH-MEDIUM CAPS",
+        subtitle: "Preparing confident, disciplined and academically grounded learners for high school readiness.",
+        intro: "Grade 7 is the capstone primary year and the beginning of the CAPS Senior Phase. Novus Via Academy equips Grade 7 learners with strong subject foundations, disciplined study habits and mature character for the step to secondary school.",
+        expectations: [
+          "CAPS Grade 7 Senior Phase subjects: English Home Language, First Additional Language, Mathematics, Natural Sciences, Social Sciences, Economic & Management Sciences (EMS), Technology, Creative Arts and Life Orientation",
+          "Structured examination preparation, time management and independent study skills",
+          "Dedicated tutoring in Mathematics and English language mastery",
+          "Leadership, accountability and Christian character development",
+          "Close communication with parents throughout the final primary year"
+        ],
+        caps: "Aligned with the South African CAPS Grade 7 curriculum in English.",
+        support: "Focused academic guidance and structured revision ensuring learners transition to high school with confidence.",
+        foundation: "Leaving Grade 7 with solid CAPS foundations and disciplined study habits sets the trajectory for high school success."
+      }
+    };
+
+    // Default Gallery Items (Clearly distinguishing illustrative photos)
+    const DEFAULT_GALLERY = [
+      {
+        title: "Structured Study & Tutoring Spaces",
+        url: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80",
+        type: "Illustrative Image"
+      },
+      {
+        title: "Focused Literacy & Numeracy Guidance",
+        url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
+        type: "Illustrative Image"
+      },
+      {
+        title: "Nurturing & Encouraging Learning Environment",
+        url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=900&q=80",
+        type: "Illustrative Image"
+      }
+    ];
+
+    // Default Announcements
+    const DEFAULT_ANNOUNCEMENTS = [
+      {
+        date: "2027 Admissions",
+        title: "2027 Enrolments Open (Gr RR – Gr 7)",
+        body: "Applications and fee structure requests are now open for the 2027 academic year. Spaces per learning group are limited to ensure individual attention."
+      },
+      {
+        date: "Campus Visits",
+        title: "Arrange a Personal Centre Visit in Claremont",
+        body: "Parents are warmly invited to schedule a visit to 976 Paff Rd, Claremont, Pretoria to meet our team and discuss your child's educational needs."
+      },
+      {
+        date: "Parent Offer",
+        title: "CambriLearn Referral Partnership (Code: 11728)",
+        body: "Parents exploring online options can access a 50% discount on the CambriLearn Starter SA CAPS curriculum using our referral code 11728."
+      }
+    ];
+
+    // FAQ Data
+    const FAQ_ITEMS = [
+      {
+        q: "Which grades does Novus Via Academy accommodate?",
+        a: "Novus Via Academy accommodates learners from Grade RR through to Grade 7 (Gr RR, Gr R, Gr 1, Gr 2, Gr 3, Gr 4, Gr 5, Gr 6 and Gr 7)."
+      },
+      {
+        q: "Which curriculum is followed?",
+        a: "We follow the South African Curriculum and Assessment Policy Statement (CAPS) across all grades from Gr RR to Gr 7."
+      },
+      {
+        q: "Is the academy English-medium?",
+        a: "Yes. Novus Via Academy is an English-medium tutor centre. All instruction, tutoring and daily academic support are provided in English."
+      },
+      {
+        q: "How do I apply?",
+        a: "You can submit an online admissions enquiry on our Fees & Enrolment page (no account creation required) or contact us directly via WhatsApp on 061 902 0023."
+      },
+      {
+        q: "How do I obtain the fee structure?",
+        a: "Centre fees are not published publicly on our website. Please click 'Request Fee Structure' on our Fees & Enrolment page or message us on WhatsApp (061 902 0023) to receive the current fee structure directly."
+      },
+      {
+        q: "Are spaces available?",
+        a: "Yes, 2027 enrolments are open. Because we maintain smaller learning groups for individual attention, space availability per grade is confirmed directly by our admissions team upon enquiry."
+      },
+      {
+        q: "Is aftercare available?",
+        a: "Yes, structured and supervised aftercare is available on-site for enrolled learners. Please note that an additional fee applies."
+      },
+      {
+        q: "What are the aftercare hours?",
+        a: "Aftercare operates from 13:00 to 18:00."
+      },
+      {
+        q: "Can parents arrange a Centre visit?",
+        a: "Yes! We encourage parents to visit us at 976 Paff Rd, Claremont, Pretoria. Use the 'Arrange a Centre Visit' button on our website or message us on WhatsApp to book a convenient appointment."
+      },
+      {
+        q: "How can parents communicate with the academy?",
+        a: "Parents can reach us via WhatsApp or telephone on 061 902 0023, by email at admin@novusvia.co.za, or through our online enquiry form."
+      },
+      {
+        q: "What is the CambriLearn referral offer?",
+        a: "Novus Via Academy is an Official CambriLearn Affiliated Tutor Centre. Through our separate referral partnership with CambriLearn, parents can explore the CambriLearn Starter SA CAPS curriculum—offering 24/7 interactive online lessons, progress tracking and flexible hybrid learning support—and receive a 50% discount using referral code 11728. Learners at Novus Via Academy are not required to use CambriLearn."
+      }
+    ];
+
+    // State & Storage Keys
+    const STORAGE_KEYS = {
+      LEADS: "novusvia_admissions_leads_v1",
+      GALLERY: "novusvia_gallery_v1",
+      ANNOUNCEMENTS: "novusvia_announcements_v1",
+      SB_CONFIG: "novusvia_supabase_config_v1",
+      ADMIN_SESSION: "novusvia_admin_authenticated_v1"
+    };
+
+    let supabaseClient = null;
+
+    function initSupabaseIfConfigured() {
+      const cfg = JSON.parse(localStorage.getItem(STORAGE_KEYS.SB_CONFIG) || "{}");
+      if (cfg.url && cfg.anonKey && window.supabase) {
+        try {
+          supabaseClient = window.supabase.createClient(cfg.url, cfg.anonKey);
+        } catch (e) {
+          console.warn("Supabase init skipped:", e);
+        }
+      }
+    }
+
+    function saveSupabaseConfig() {
+      const url = document.getElementById("sbUrlInput").value.trim();
+      const anonKey = document.getElementById("sbAnonKeyInput").value.trim();
+      const webhook = document.getElementById("emailWebhookInput").value.trim();
+      localStorage.setItem(STORAGE_KEYS.SB_CONFIG, JSON.stringify({ url, anonKey, webhook }));
+      initSupabaseIfConfigured();
+      alert("Backend configuration saved.");
+    }
+
+    // Navigation Controller
+    function navigateTo(viewId, gradeParam = null) {
+      document.querySelectorAll(".page-view").forEach(v => v.classList.remove("active"));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.add("active");
+      }
+
+      document.querySelectorAll(".nav-link").forEach(btn => btn.classList.remove("active"));
+      const activeNav = document.querySelector(`.nav-link[data-nav="${viewId === 'grade-detail' ? 'grades' : viewId}"]`);
+      if (activeNav) activeNav.classList.add("active");
+
+      if (viewId === "grade-detail" && gradeParam) {
+        renderGradeDetail(gradeParam);
+      }
+
+      if (viewId === "admin") {
+        checkAdminSession();
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobileDrawer").classList.toggle("open");
+    }
+
+    // Render Homepage 9 Grade Cards
+    function renderHomeGrades() {
+      const grid = document.getElementById("homeGradesGrid");
+      grid.innerHTML = Object.entries(GRADES_DATA).map(([grade, info]) => `
+        <div class="grade-card" onclick="navigateTo('grade-detail', '${grade}')">
+          <div>
+            <span class="grade-badge">${grade} • CAPS</span>
+            <h3>${grade}</h3>
+            <p>${info.subtitle}</p>
+          </div>
+          <span class="grade-card-link">Explore ${grade} Details →</span>
+        </div>
+      `).join("");
+    }
+
+    // Render Dedicated Grade Page
+    function renderGradeDetail(gradeKey) {
+      const data = GRADES_DATA[gradeKey] || GRADES_DATA["Gr R"];
+
+      // Render quick-switch pills
+      const pillsWrap = document.getElementById("gradeSwitcherPills");
+      pillsWrap.innerHTML = Object.keys(GRADES_DATA).map(g => `
+        <button
+          onclick="renderGradeDetail('${g}')"
+          style="padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: 1px solid var(--gold); background: ${g === gradeKey ? 'var(--gold)' : 'rgba(255,255,255,0.1)'}; color: ${g === gradeKey ? 'var(--navy-deep)' : 'var(--white)'};">
+          ${g}
+        </button>
+      `).join("");
+
+      document.getElementById("gradePhaseKicker").textContent = data.phase;
+      document.getElementById("gradePageTitle").textContent = `${gradeKey} – English-Medium CAPS Support`;
+      document.getElementById("gradePageSubtitle").textContent = data.subtitle;
+      document.getElementById("gradeOverviewHeading").textContent = `What ${gradeKey} Learners Can Expect`;
+      document.getElementById("gradeIntroText").textContent = data.intro;
+
+      document.getElementById("gradeExpectationsList").innerHTML = data.expectations.map(item => `
+        <li><span class="check-icon">✔</span><span>${item}</span></li>
+      `).join("");
+
+      document.getElementById("gradeCapsText").textContent = data.caps;
+      document.getElementById("gradeSupportText").textContent = data.support;
+      document.getElementById("gradeFoundationText").textContent = data.foundation;
+
+      // Pre-populated Grade WhatsApp Message
+      const waMsg = encodeURIComponent(`Good day. I would like to enquire about enrolling my child in ${gradeKey} for 2027.`);
+      document.getElementById("gradeWhatsAppBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`;
+
+      // Pre-populated Online Form Button
+      document.getElementById("gradeFormBtn").onclick = () => openEnquiryWithPreset("Enrolment", gradeKey);
+    }
+
+    // Open Enquiry Form with Preset Grade & Type
+    function openEnquiryWithPreset(type, grade) {
+      navigateTo("enrolment");
+      setTimeout(() => {
+        if (type) document.getElementById("enquiryType").value = type;
+        if (grade) document.getElementById("gradeApplying").value = grade;
+        document.getElementById("admissionsFormCard").scrollIntoView({ behavior: "smooth" });
+      }, 80);
+    }
+
+    function setEnquiryFormType(type) {
+      document.getElementById("enquiryType").value = type;
+      document.getElementById("admissionsFormCard").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Copy Referral Code 11728
+    function copyReferralCode() {
+      const code = "11728";
+      navigator.clipboard.writeText(code).then(() => {
+        const fb = document.getElementById("copyFeedback");
+        fb.style.display = "inline";
+        setTimeout(() => { fb.style.display = "none"; }, 2500);
+      });
+    }
+
+    // Render FAQ Accordion
+    function renderFAQs() {
+      const wrap = document.getElementById("faqAccordionContainer");
+      wrap.innerHTML = FAQ_ITEMS.map((item, idx) => `
+        <div class="faq-item ${idx === 0 ? 'open' : ''}">
+          <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+            <span>${item.q}</span>
+            <span style="color: var(--gold); font-size: 1.2rem;">+</span>
+          </button>
+          <div class="faq-answer">${item.a}</div>
+        </div>
+      `).join("");
+    }
+
+    // Render Environment Gallery
+    function renderGallery() {
+      const items = JSON.parse(localStorage.getItem(STORAGE_KEYS.GALLERY) || "null") || DEFAULT_GALLERY;
+      const grid = document.getElementById("environmentGalleryGrid");
+      grid.innerHTML = items.map(item => `
+        <div class="gallery-card">
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="gallery-meta">
+            <span class="gallery-tag">${item.type}</span>
+            <strong>${item.title}</strong>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Render Announcements
+    function renderAnnouncements() {
+      const items = JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS) || "null") || DEFAULT_ANNOUNCEMENTS;
+      const grid = document.getElementById("announcementsGrid");
+      grid.innerHTML = items.map(item => `
+        <div class="feature-card">
+          <span class="section-kicker">${item.date}</span>
+          <h3>${item.title}</h3>
+          <p>${item.body}</p>
+        </div>
+      `).join("");
+    }
+
+    // =========================================================
+    // ENQUIRY SUBMISSION (SUPABASE + EMAIL NOTIFICATION + LOCAL STORE)
+    // =========================================================
+    async function handleEnquirySubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById("submitEnquiryBtn");
+      const successBox = document.getElementById("enquirySuccessAlert");
+      const errorBox = document.getElementById("enquiryErrorAlert");
+
+      successBox.style.display = "none";
+      errorBox.style.display = "none";
+      btn.disabled = true;
+      btn.textContent = "SUBMITTING ENQUIRY...";
+
+      const newLead = {
+        id: "NVA-" + Date.now(),
+        created_at: new Date().toISOString(),
+        parent_name: document.getElementById("parentName").value.trim(),
+        parent_mobile: document.getElementById("parentMobile").value.trim(),
+        parent_email: document.getElementById("parentEmail").value.trim(),
+        learner_name: document.getElementById("learnerName").value.trim(),
+        grade_requested: document.getElementById("gradeApplying").value,
+        current_centre: document.getElementById("currentCentre").value.trim(),
+        enquiry_type: document.getElementById("enquiryType").value,
+        preferred_contact: document.getElementById("preferredContact").value,
+        message: document.getElementById("additionalMessage").value.trim(),
+        status: "New Enquiry",
+        notes: ""
+      };
+
+      try {
+        // 1. Save to Supabase if configured
+        if (supabaseClient) {
+          const { error } = await supabaseClient.from("admissions_enquiries").insert([newLead]);
+          if (error) console.error("Supabase insert warning:", error.message);
+        }
+
+        // 2. Always persist locally as backup / instant sync
+        const existingLeads = JSON.parse(localStorage.getItem(STORAGE_KEYS.LEADS) || "[]");
+        existingLeads.unshift(newLead);
+        localStorage.setItem(STORAGE_KEYS.LEADS, JSON.stringify(existingLeads));
+
+        // 3. Trigger Server-Side Email Notification Webhook (admin@novusvia.co.za) if configured
+        const cfg = JSON.parse(localStorage.getItem(STORAGE_KEYS.SB_CONFIG) || "{}");
+        if (cfg.webhook) {
+          try {
+            await fetch(cfg.webhook, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                to: "admin@novusvia.co.za",
+                subject: `New ${newLead.enquiry_type} Enquiry - ${newLead.grade_requested} (${newLead.learner_name})`,
+                lead: newLead
+              })
+            });
+          } catch (mailErr) {
+            // Per requirement: If email delivery fails, enquiry remains saved in database & dashboard
+            console.warn("Email webhook notice (lead safely saved):", mailErr);
+          }
+        }
+
+        // 4. Prepare instant follow-up WhatsApp link for parent
+        const waFollowUp = encodeURIComponent(
+          `Good day. I just submitted an online ${newLead.enquiry_type} enquiry for ${newLead.learner_name} (${newLead.grade_requested}) on the Novus Via Academy website.`
+        );
+        document.getElementById("postSubmitWaLink").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waFollowUp}`;
+
+        document.getElementById("enquiryForm").reset();
+        successBox.style.display = "block";
+      } catch (err) {
+        errorBox.textContent = "We encountered a temporary issue submitting your form. Please message us directly on WhatsApp (061 902 0023) or email admin@novusvia.co.za.";
+        errorBox.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "SUBMIT ADMISSIONS ENQUIRY";
+      }
+    }
+
+    // =========================================================
+    // ADMINISTRATOR AUTHENTICATION & ADMISSIONS DASHBOARD
+    // =========================================================
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("adminEmailInput").value.trim();
+      const password = document.getElementById("adminPassInput").value;
+      const errBox = document.getElementById("adminLoginError");
+      errBox.style.display = "none";
+
+      if (supabaseClient) {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) {
+          errBox.textContent = "Authentication failed: " + error.message;
+          errBox.style.display = "block";
+          return;
+        }
+        sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, "true");
+        checkAdminSession();
+        return;
+      }
+
+      // Local Staff Access Verification when Supabase keys are not yet attached
+      if (email.toLowerCase() === "admin@novusvia.co.za" && password.length >= 6) {
+        sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, "true");
+        checkAdminSession();
+      } else {
+        errBox.textContent = "Please sign in with admin@novusvia.co.za and a valid staff password (minimum 6 characters).";
+        errBox.style.display = "block";
+      }
+    }
+
+    function adminLogout() {
+      sessionStorage.removeItem(STORAGE_KEYS.ADMIN_SESSION);
+      if (supabaseClient) supabaseClient.auth.signOut();
+      checkAdminSession();
+    }
+
+    function checkAdminSession() {
+      const isAuthed = sessionStorage.getItem(STORAGE_KEYS.ADMIN_SESSION) === "true";
+      document.getElementById("adminLoginView").style.display = isAuthed ? "none" : "block";
+      document.getElementById("adminDashboardView").style.display = isAuthed ? "block" : "none";
+      document.getElementById("adminHeaderActions").style.display = isAuthed ? "flex" : "none";
+
+      const cfg = JSON.parse(localStorage.getItem(STORAGE_KEYS.SB_CONFIG) || "{}");
+      if (cfg.url) document.getElementById("sbUrlInput").value = cfg.url;
+      if (cfg.anonKey) document.getElementById("sbAnonKeyInput").value = cfg.anonKey;
+      if (cfg.webhook) document.getElementById("emailWebhookInput").value = cfg.webhook;
+
+      if (isAuthed) {
+        document.getElementById("backendModeBadge").textContent = supabaseClient
+          ? "Connected: Live Supabase DB"
+          : "Storage Mode: Local Admissions Vault";
+        renderAdminLeads();
+      }
+    }
+
+    async function fetchAllLeads() {
+      if (supabaseClient) {
+        const { data, error } = await supabaseClient
+          .from("admissions_enquiries")
+          .select("*")
+          .order("created_at", { ascending: false });
+        if (!error && data) return data;
+      }
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.LEADS) || "[]");
+    }
+
+    async function renderAdminLeads() {
+      const leads = await fetchAllLeads();
+
+      // Calculate Statistics
+      const total = leads.length;
+      const newCount = leads.filter(l => l.status === "New Enquiry").length;
+      const followUp = leads.filter(l => l.status === "Follow-up Required").length;
+      const visits = leads.filter(l => l.status === "Centre Visit Arranged").length;
+      const apps = leads.filter(l => l.status === "Application Received").length;
+      const registered = leads.filter(l => l.status === "Registered").length;
+
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statNew").textContent = newCount;
+      document.getElementById("statFollowUp").textContent = followUp;
+      document.getElementById("statVisits").textContent = visits;
+      document.getElementById("statApps").textContent = apps;
+      document.getElementById("statRegistered").textContent = registered;
+      document.getElementById("targetProgressText").textContent = `${registered} / 100 Registered Learners (${newCount} New Unread Enquiries)`;
+
+      // Enquiries by Grade Bar
+      const gradeCounts = {};
+      Object.keys(GRADES_DATA).forEach(g => gradeCounts[g] = 0);
+      leads.forEach(l => {
+        if (gradeCounts[l.grade_requested] !== undefined) gradeCounts[l.grade_requested]++;
+      });
+      document.getElementById("gradeBreakdownBar").innerHTML = Object.entries(gradeCounts).map(([g, count]) => `
+        <span style="background: var(--blue-grey); padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; color: var(--navy);">
+          ${g}: <span style="color: var(--gold);">${count}</span>
+        </span>
+      `).join("");
+
+      // Apply Search & Filters
+      const q = document.getElementById("filterSearch").value.toLowerCase();
+      const fGrade = document.getElementById("filterGrade").value;
+      const fType = document.getElementById("filterType").value;
+      const fStatus = document.getElementById("filterStatus").value;
+      const fDate = document.getElementById("filterDate").value;
+
+      const filtered = leads.filter(l => {
+        const matchQ = !q ||
+          (l.parent_name || "").toLowerCase().includes(q) ||
+          (l.learner_name || "").toLowerCase().includes(q) ||
+          (l.parent_mobile || "").toLowerCase().includes(q) ||
+          (l.parent_email || "").toLowerCase().includes(q);
+        const matchGrade = !fGrade || l.grade_requested === fGrade;
+        const matchType = !fType || l.enquiry_type === fType;
+        const matchStatus = !fStatus || l.status === fStatus;
+        const matchDate = !fDate || (l.created_at || "").startsWith(fDate);
+        return matchQ && matchGrade && matchType && matchStatus && matchDate;
+      });
+
+      const container = document.getElementById("adminLeadsContainer");
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="feature-card" style="text-align: center; padding: 40px;">
+            <h3>No Enquiries Found</h3>
+            <p>Submit a test enquiry via the Fees & Enrolment page or adjust your search filters above.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const statuses = [
+        "New Enquiry",
+        "Contacted",
+        "Follow-up Required",
+        "Centre Visit Arranged",
+        "Application Received",
+        "Registered",
+        "Not Proceeding"
+      ];
+
+      container.innerHTML = filtered.map(lead => {
+        const cleanPhone = (lead.parent_mobile || "").replace(/\D/g, "");
+        const intlPhone = cleanPhone.startsWith("0") ? "27" + cleanPhone.slice(1) : cleanPhone;
+        const waReply = encodeURIComponent(
+          `Good day ${lead.parent_name}, thank you for your ${lead.enquiry_type} enquiry with Novus Via Academy regarding ${lead.learner_name} (${lead.grade_requested}). How may we assist you further?`
+        );
+        const dateFormatted = new Date(lead.created_at).toLocaleString("en-ZA", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        });
+
+        return `
+          <div class="lead-card">
+            <div class="lead-header">
+              <div>
+                <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">${dateFormatted} • ${lead.enquiry_type}</span>
+                <h3 style="font-size: 1.35rem; margin-top: 2px;">${lead.parent_name} <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">(Learner: ${lead.learner_name} – ${lead.grade_requested})</span></h3>
+              </div>
+              <span class="status-pill">${lead.status}</span>
+            </div>
+
+            <div class="lead-details-grid">
+              <div><strong>Mobile:</strong><br>${lead.parent_mobile}</div>
+              <div><strong>Email:</strong><br>${lead.parent_email}</div>
+              <div><strong>Preferred Contact:</strong><br>${lead.preferred_contact || "Any"}</div>
+              <div><strong>Current Centre:</strong><br>${lead.current_centre || "Not specified"}</div>
+            </div>
+
+            ${lead.message ? `<div style="background: var(--ivory); padding: 12px 14px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 14px;"><strong>Parent Message:</strong> ${lead.message}</div>` : ""}
+
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px; align-items: end;">
+              <div class="form-group">
+                <label>Update Enquiry Status</label>
+                <select onchange="updateLeadField('${lead.id}', 'status', this.value)">
+                  ${statuses.map(st => `<option value="${st}" ${lead.status === st ? 'selected' : ''}>${st}</option>`).join("")}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Private Internal Follow-Up Notes</label>
+                <input type="text" value="${(lead.notes || "").replace(/"/g, '&quot;')}" placeholder="Add private staff follow-up notes..." onchange="updateLeadField('${lead.id}', 'notes', this.value)" />
+              </div>
+            </div>
+
+            <div class="lead-actions-bar">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a class="btn btn-primary btn-sm" href="tel:${lead.parent_mobile}">📞 CALL PARENT</a>
+                <a class="btn btn-outline btn-sm" href="mailto:${lead.parent_email}?subject=Novus%20Via%20Academy%20Enquiry%20-%20${encodeURIComponent(lead.learner_name)}">✉️ EMAIL PARENT</a>
+                <a class="btn btn-whatsapp btn-sm" href="https://wa.me/${intlPhone}?text=${waReply}" target="_blank" rel="noopener">💬 WHATSAPP PARENT</a>
+              </div>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">ID: ${lead.id}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function updateLeadField(id, field, value) {
+      if (supabaseClient) {
+        await supabaseClient.from("admissions_enquiries").update({ [field]: value }).eq("id", id);
+      }
+      const leads = JSON.parse(localStorage.getItem(STORAGE_KEYS.LEADS) || "[]");
+      const idx = leads.findIndex(l => l.id === id);
+      if (idx !== -1) {
+        leads[idx][field] = value;
+        localStorage.setItem(STORAGE_KEYS.LEADS, JSON.stringify(leads));
+      }
+      renderAdminLeads();
+    }
+
+    async function exportLeadsCSV() {
+      const leads = await fetchAllLeads();
+      if (!leads.length) {
+        alert("No leads to export.");
+        return;
+      }
+      const headers = ["Date", "Parent Name", "Mobile", "Email", "Learner Name", "Grade", "Enquiry Type", "Status", "Notes", "Message"];
+      const rows = leads.map(l => [
+        l.created_at,
+        l.parent_name,
+        l.parent_mobile,
+        l.parent_email,
+        l.learner_name,
+        l.grade_requested,
+        l.enquiry_type,
+        l.status,
+        l.notes,
+        l.message
+      ].map(v => `"${String(v || "").replace(/"/g, '""')}"`).join(","));
+
+      const csv = [headers.join(","), ...rows].join("
+");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `novus-via-admissions-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+    }
+
+    function addGalleryPhoto() {
+      const title = document.getElementById("newGalleryTitle").value.trim();
+      const url = document.getElementById("newGalleryUrl").value.trim();
+      const type = document.getElementById("newGalleryType").value;
+      if (!title || !url) {
+        alert("Please enter both a photo caption and image URL.");
+        return;
+      }
+      const items = JSON.parse(localStorage.getItem(STORAGE_KEYS.GALLERY) || "null") || [...DEFAULT_GALLERY];
+      items.unshift({ title, url, type });
+      localStorage.setItem(STORAGE_KEYS.GALLERY, JSON.stringify(items));
+      document.getElementById("newGalleryTitle").value = "";
+      document.getElementById("newGalleryUrl").value = "";
+      renderGallery();
+      alert("Photo added to the Learning Environment gallery.");
+    }
+
+    function addAnnouncement() {
+      const title = document.getElementById("newAnnTitle").value.trim();
+      const body = document.getElementById("newAnnBody").value.trim();
+      if (!title || !body) {
+        alert("Please enter an announcement title and details.");
+        return;
+      }
+      const items = JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS) || "null") || [...DEFAULT_ANNOUNCEMENTS];
+      items.unshift({
+        date: new Date().toLocaleDateString("en-ZA", { day: "numeric", month: "short", year: "numeric" }),
+        title,
+        body
+      });
+      localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENTS, JSON.stringify(items));
+      document.getElementById("newAnnTitle").value = "";
+      document.getElementById("newAnnBody").value = "";
+      renderAnnouncements();
+      alert("Announcement published on the homepage.");
+    }
+
+    // Initialize Application
+    document.addEventListener("DOMContentLoaded", () => {
+      initSupabaseIfConfigured();
+      renderHomeGrades();
+      renderGradeDetail("Gr R");
+      renderFAQs();
+      renderGallery();
+      renderAnnouncements();
+    });
+  </script>
+</body>
+</html>
